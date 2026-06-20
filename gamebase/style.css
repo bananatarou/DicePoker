@@ -1,0 +1,20 @@
+/* 背景色をダークテーマに変更 */
+body {
+    background-color: #282c34; /* ダークグレー */
+    text-align: center;
+    color: white; /* テキストを白に */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* canvasの中央配置 */
+canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border: 2px solid white; /* 枠線を追加 */
+}

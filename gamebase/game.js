@@ -1,5 +1,5 @@
 //-------フレーム処理
-FPS = 5;
+FPS = 30;
 let stime,etime,ptime;
 
 //============= この下に大域変数を追加 =========
@@ -14,9 +14,16 @@ let score;
 let hand;
 let pip;
 let multi;
+let bgm;
 
 init();
 loop();
+// 効果音を再生する関数
+function playSound(src) {
+    let sound = new Audio(src);
+    sound.volume = 0.5; // 音量を調整
+    sound.play();
+}
 
 function init(){
     setCanvas(1200,720);
@@ -32,6 +39,25 @@ function init(){
     chance = 4
     rerollChance = 3;
     pip = 0;
+
+    // BGMを初期化（初回のみ）
+    if (!bgm) {
+        bgm = new Audio("./audio/Funky_weekend_night.mp3");
+        bgm.loop = true;
+        bgm.volume = 0.5;
+
+        // キーボード操作後に再生
+        const startBGM = (event) => {
+            bgm.play();
+            window.removeEventListener("keydown", startBGM); // 一度だけ再生
+        };
+        window.addEventListener("keydown", startBGM);
+    } else {
+        // BGMが再生中であれば停止して再生
+        bgm.pause();
+        bgm.currentTime = 0;
+        bgm.play();
+    }
 }
 
 function loop(){
@@ -44,6 +70,7 @@ function loop(){
 
         if(key[32] > 0){
             nextScene = 1;
+            key[32] = 0;
         }
     }
 
@@ -54,6 +81,7 @@ function loop(){
 
         if(key[32] > 0){
             roll();
+            key[32] = 0;
         }
 
         for(let i = 0; i < 5; i++){
@@ -73,12 +101,14 @@ function loop(){
                 }else{
                     diceFlag[i] = "H";
                 }
+                key[49 + i] = 0;
             }
         }
 
         if(key[82] > 0 && rerollChance != 0){
             roll();
             rerollChance--;
+            key[82] = 0;
         }
         printStatus();
         for(let i = 0; i < 5; i++){
@@ -92,6 +122,7 @@ function loop(){
             diceFlag.fill("C");
             pip = 0;
             nextScene = 3;
+            key[32] = 0;
         }
     }
 
@@ -108,11 +139,13 @@ function loop(){
             print("Press space to nextroll", "center", 600, 540);
             if(key[32] > 0){
                 nextScene = 1;
+                key[32] = 0;
             }
         }else{
             print("Press space to result", "center", 600, 540);
             if(key[32] > 0){
                 nextScene = 4;
+                key[32] = 0;
             }
         }
     }
@@ -126,6 +159,7 @@ function loop(){
         if(key[27] > 0){
             init();
             nextScene = 1;
+            key[27] = 0;
         }
     }
 
@@ -169,6 +203,7 @@ function roll(){
         }
         nextScene = 2;
     }
+    playSound("./audio/賽を振る_3.mp3");
 }
 
 //-----.役判定、スコア計算用関数-----

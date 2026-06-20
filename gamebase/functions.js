@@ -26,17 +26,18 @@ function drawImg(n, x, y){
 }
 
 let key = new Array(256);
+let keyPressed = new Array(256).fill(false); // 一度だけ押した判定用
 
-function onKey(event){
-    if(!event.repeat){
-        key[event.keyCode] = 1;
-    }else{
-        key[event.keyCode] = 0;
+function onKey(event) {
+    if (!keyPressed[event.keyCode]) { // キーが押されていない場合のみ処理
+        key[event.keyCode] = 1; // 押した状態にする
+        keyPressed[event.keyCode] = true; // 一度押したフラグを立てる
     }
 }
 
-function offKey(event){
-    key[event.keyCode] = 0;
+function offKey(event) {
+    key[event.keyCode] = 0; // 離した状態にする
+    keyPressed[event.keyCode] = false; // フラグをリセット
 }
 
 window.addEventListener("keydown", onKey);
@@ -59,3 +60,4 @@ function drawCircle(x, y, r, outsidecolor, insidecolor){
     ctx.stroke();
     ctx.fill();
 }
+

@@ -24,4 +24,4 @@
 * `Esc`: リトライ（タイトルへ戻る）
 
 スクリーンショット
-* https://github.com/user-attachments/assets/a12fb1a3-c586-445b-93a5-033ddb788898
+<img width="1196" height="717" alt="Image" src="https://github.com/user-attachments/assets/57acf088-2f1a-4f84-95bb-6243804b9bc2" />

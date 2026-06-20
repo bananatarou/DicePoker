@@ -22,3 +22,6 @@
 * `1` 〜 `5`: 1〜5個目のサイコロを Hold（キープ） / Change（振り直し）に切り替え
 * `R`: Changeに設定したサイコロをリロール（最大3回）
 * `Esc`: リトライ（タイトルへ戻る）
+
+スクリーンショット
+* https://github.com/user-attachments/assets/a12fb1a3-c586-445b-93a5-033ddb788898

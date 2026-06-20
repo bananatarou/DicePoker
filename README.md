@@ -29,4 +29,4 @@
 
 ## 🌐 ゲームリンク
 以下のリンクからゲームをプレイできます：
-[Dice Poker をプレイする](https://bananatarou.github.io/DicePoker/)
+[Dice Poker をプレイする]([https://bananatarou.github.io/DicePoker/](https://github.com/bananatarou/DicePoker/blob/main/gamebase/game.html))
